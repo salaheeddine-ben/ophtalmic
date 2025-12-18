@@ -1,0 +1,427 @@
+{
+  "id": 5678901234567,
+  "admin_graphql_api_id": "gid://shopify/Order/5678901234567",
+  "app_id": 580111,
+  "browser_ip": "192.168.1.1",
+  "buyer_accepts_marketing": true,
+  "cancel_reason": null,
+  "cancelled_at": null,
+  "cart_token": "abc123def456",
+  "checkout_id": 1234567890123,
+  "checkout_token": "token_abc123",
+  "client_details": {
+    "accept_language": "fr-FR",
+    "browser_height": 1080,
+    "browser_ip": "192.168.1.1",
+    "browser_width": 1920,
+    "session_hash": null,
+    "user_agent": "Mozilla/5.0..."
+  },
+  "closed_at": null,
+  "company": null,
+  "confirmed": true,
+  "contact_email": "jean.dupont@example.com",
+  "created_at": "2025-12-18T14:30:00+01:00",
+  "currency": "EUR",
+  "current_subtotal_price": "166.67",
+  "current_total_discounts": "20.00",
+  "current_total_duties_set": null,
+  "current_total_price": "199.00",
+  "current_total_tax": "33.17",
+  "customer_locale": "fr",
+  "device_id": null,
+  "discount_codes": [
+    {
+      "code": "NOEL2025",
+      "amount": "20.00",
+      "type": "fixed_amount"
+    }
+  ],
+  "email": "jean.dupont@example.com",
+  "estimated_taxes": false,
+  "financial_status": "paid",
+  "fulfillment_status": null,
+  "landing_site": "/",
+  "landing_site_ref": null,
+  "location_id": null,
+  "merchant_of_record_app_id": null,
+  "name": "#1001",
+  "note": "Livraison avant Noël svp",
+  "note_attributes": [],
+  "number": 1,
+  "order_number": 1001,
+  "order_status_url": "https://votre-boutique.myshopify.com/12345/orders/token/authenticate",
+  "original_total_duties_set": null,
+  "payment_gateway_names": [
+    "stripe"
+  ],
+  "phone": "+33612345678",
+  "presentment_currency": "EUR",
+  "processed_at": "2025-12-18T14:30:00+01:00",
+  "processing_method": "direct",
+  "reference": "ABC123",
+  "referring_site": "",
+  "source_identifier": "ABC123",
+  "source_name": "web",
+  "source_url": null,
+  "subtotal_price": "166.67",
+  "tags": "optique, lunettes",
+  "tax_lines": [
+    {
+      "price": "33.17",
+      "rate": 0.20,
+      "title": "TVA",
+      "price_set": {
+        "shop_money": {
+          "amount": "33.17",
+          "currency_code": "EUR"
+        },
+        "presentment_money": {
+          "amount": "33.17",
+          "currency_code": "EUR"
+        }
+      }
+    }
+  ],
+  "taxes_included": false,
+  "test": false,
+  "token": "token_abc123",
+  "total_discounts": "20.00",
+  "total_line_items_price": "186.67",
+  "total_outstanding": "0.00",
+  "total_price": "199.00",
+  "total_shipping_price_set": {
+    "shop_money": {
+      "amount": "10.00",
+      "currency_code": "EUR"
+    },
+    "presentment_money": {
+      "amount": "10.00",
+      "currency_code": "EUR"
+    }
+  },
+  "total_tax": "33.17",
+  "total_tip_received": "0.00",
+  "total_weight": 500,
+  "updated_at": "2025-12-18T14:30:00+01:00",
+  "user_id": null,
+  "billing_address": {
+    "first_name": "Jean",
+    "address1": "123 Rue de la Paix",
+    "phone": "+33612345678",
+    "city": "Paris",
+    "zip": "75001",
+    "province": "Île-de-France",
+    "country": "France",
+    "last_name": "Dupont",
+    "address2": "Appartement 5B",
+    "company": null,
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "name": "Jean Dupont",
+    "country_code": "FR",
+    "province_code": "IDF"
+  },
+  "customer": {
+    "id": 987654321,
+    "email": "jean.dupont@example.com",
+    "accepts_marketing": true,
+    "created_at": "2024-01-15T10:00:00+01:00",
+    "updated_at": "2025-12-18T14:30:00+01:00",
+    "first_name": "Jean",
+    "last_name": "Dupont",
+    "state": "enabled",
+    "note": "Client fidèle",
+    "verified_email": true,
+    "multipass_identifier": null,
+    "tax_exempt": false,
+    "phone": "+33612345678",
+    "email_marketing_consent": {
+      "state": "subscribed",
+      "opt_in_level": "confirmed_opt_in",
+      "consent_updated_at": "2024-01-15T10:00:00+01:00"
+    },
+    "tags": "VIP, fidèle",
+    "currency": "EUR",
+    "accepts_marketing_updated_at": "2024-01-15T10:00:00+01:00",
+    "marketing_opt_in_level": "confirmed_opt_in",
+    "tax_exemptions": [],
+    "admin_graphql_api_id": "gid://shopify/Customer/987654321",
+    "default_address": {
+      "id": 1122334455,
+      "customer_id": 987654321,
+      "first_name": "Jean",
+      "last_name": "Dupont",
+      "company": null,
+      "address1": "123 Rue de la Paix",
+      "address2": "Appartement 5B",
+      "city": "Paris",
+      "province": "Île-de-France",
+      "country": "France",
+      "zip": "75001",
+      "phone": "+33612345678",
+      "name": "Jean Dupont",
+      "province_code": "IDF",
+      "country_code": "FR",
+      "country_name": "France",
+      "default": true
+    }
+  },
+  "discount_applications": [
+    {
+      "target_type": "line_item",
+      "type": "discount_code",
+      "value": "20.0",
+      "value_type": "fixed_amount",
+      "allocation_method": "across",
+      "target_selection": "all",
+      "code": "NOEL2025"
+    }
+  ],
+  "fulfillments": [],
+  "line_items": [
+    {
+      "id": 11111111111,
+      "admin_graphql_api_id": "gid://shopify/LineItem/11111111111",
+      "fulfillable_quantity": 1,
+      "fulfillment_service": "manual",
+      "fulfillment_status": null,
+      "gift_card": false,
+      "grams": 250,
+      "name": "Lunettes de vue Ray-Ban RB5228 - Noir / M",
+      "price": "129.00",
+      "price_set": {
+        "shop_money": {
+          "amount": "129.00",
+          "currency_code": "EUR"
+        },
+        "presentment_money": {
+          "amount": "129.00",
+          "currency_code": "EUR"
+        }
+      },
+      "product_exists": true,
+      "product_id": 7777777777,
+      "properties": [],
+      "quantity": 1,
+      "requires_shipping": true,
+      "sku": "RAY-RB5228-BLK-M",
+      "taxable": true,
+      "title": "Lunettes de vue Ray-Ban RB5228",
+      "total_discount": "12.90",
+      "total_discount_set": {
+        "shop_money": {
+          "amount": "12.90",
+          "currency_code": "EUR"
+        },
+        "presentment_money": {
+          "amount": "12.90",
+          "currency_code": "EUR"
+        }
+      },
+      "variant_id": 88888888888,
+      "variant_inventory_management": "shopify",
+      "variant_title": "Noir / M",
+      "vendor": "Ray-Ban",
+      "tax_lines": [
+        {
+          "channel_liable": false,
+          "price": "23.22",
+          "price_set": {
+            "shop_money": {
+              "amount": "23.22",
+              "currency_code": "EUR"
+            },
+            "presentment_money": {
+              "amount": "23.22",
+              "currency_code": "EUR"
+            }
+          },
+          "rate": 0.20,
+          "title": "TVA"
+        }
+      ],
+      "duties": [],
+      "discount_allocations": [
+        {
+          "amount": "12.90",
+          "amount_set": {
+            "shop_money": {
+              "amount": "12.90",
+              "currency_code": "EUR"
+            },
+            "presentment_money": {
+              "amount": "12.90",
+              "currency_code": "EUR"
+            }
+          },
+          "discount_application_index": 0
+        }
+      ]
+    },
+    {
+      "id": 22222222222,
+      "admin_graphql_api_id": "gid://shopify/LineItem/22222222222",
+      "fulfillable_quantity": 1,
+      "fulfillment_service": "manual",
+      "fulfillment_status": null,
+      "gift_card": false,
+      "grams": 250,
+      "name": "Étui à lunettes Premium - Marron",
+      "price": "57.67",
+      "price_set": {
+        "shop_money": {
+          "amount": "57.67",
+          "currency_code": "EUR"
+        },
+        "presentment_money": {
+          "amount": "57.67",
+          "currency_code": "EUR"
+        }
+      },
+      "product_exists": true,
+      "product_id": 6666666666,
+      "properties": [],
+      "quantity": 1,
+      "requires_shipping": true,
+      "sku": "ETUI-PREM-BRN",
+      "taxable": true,
+      "title": "Étui à lunettes Premium",
+      "total_discount": "7.10",
+      "total_discount_set": {
+        "shop_money": {
+          "amount": "7.10",
+          "currency_code": "EUR"
+        },
+        "presentment_money": {
+          "amount": "7.10",
+          "currency_code": "EUR"
+        }
+      },
+      "variant_id": 99999999999,
+      "variant_inventory_management": "shopify",
+      "variant_title": "Marron",
+      "vendor": "OptiquePlus",
+      "tax_lines": [
+        {
+          "channel_liable": false,
+          "price": "9.95",
+          "price_set": {
+            "shop_money": {
+              "amount": "9.95",
+              "currency_code": "EUR"
+            },
+            "presentment_money": {
+              "amount": "9.95",
+              "currency_code": "EUR"
+            }
+          },
+          "rate": 0.20,
+          "title": "TVA"
+        }
+      ],
+      "duties": [],
+      "discount_allocations": [
+        {
+          "amount": "7.10",
+          "amount_set": {
+            "shop_money": {
+              "amount": "7.10",
+              "currency_code": "EUR"
+            },
+            "presentment_money": {
+              "amount": "7.10",
+              "currency_code": "EUR"
+            }
+          },
+          "discount_application_index": 0
+        }
+      ]
+    }
+  ],
+  "payment_details": {
+    "credit_card_bin": "424242",
+    "avs_result_code": null,
+    "cvv_result_code": null,
+    "credit_card_number": "•••• •••• •••• 4242",
+    "credit_card_company": "Visa"
+  },
+  "payment_terms": null,
+  "refunds": [],
+  "shipping_address": {
+    "first_name": "Jean",
+    "address1": "123 Rue de la Paix",
+    "phone": "+33612345678",
+    "city": "Paris",
+    "zip": "75001",
+    "province": "Île-de-France",
+    "country": "France",
+    "last_name": "Dupont",
+    "address2": "Appartement 5B",
+    "company": null,
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "name": "Jean Dupont",
+    "country_code": "FR",
+    "province_code": "IDF"
+  },
+  "shipping_lines": [
+    {
+      "id": 3333333333,
+      "carrier_identifier": "colissimo",
+      "code": "Standard",
+      "discounted_price": "10.00",
+      "discounted_price_set": {
+        "shop_money": {
+          "amount": "10.00",
+          "currency_code": "EUR"
+        },
+        "presentment_money": {
+          "amount": "10.00",
+          "currency_code": "EUR"
+        }
+      },
+      "phone": null,
+      "price": "10.00",
+      "price_set": {
+        "shop_money": {
+          "amount": "10.00",
+          "currency_code": "EUR"
+        },
+        "presentment_money": {
+          "amount": "10.00",
+          "currency_code": "EUR"
+        }
+      },
+      "requested_fulfillment_service_id": null,
+      "source": "shopify",
+      "title": "Livraison Standard Colissimo",
+      "tax_lines": [],
+      "discount_allocations": []
+    }
+  ],
+  "transactions": [
+    {
+      "id": 5555555555,
+      "admin_graphql_api_id": "gid://shopify/OrderTransaction/5555555555",
+      "amount": "199.00",
+      "authorization": "ch_3P4Jh2K3xRnz4wXh1234567",
+      "created_at": "2025-12-18T14:30:00+01:00",
+      "currency": "EUR",
+      "device_id": null,
+      "error_code": null,
+      "gateway": "stripe",
+      "kind": "sale",
+      "location_id": null,
+      "message": "Transaction approuvée",
+      "order_id": 5678901234567,
+      "parent_id": null,
+      "processed_at": "2025-12-18T14:30:00+01:00",
+      "receipt": {},
+      "source_name": "web",
+      "status": "success",
+      "test": false,
+      "user_id": null
+    }
+  ]
+}
