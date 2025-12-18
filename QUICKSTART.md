@@ -40,6 +40,21 @@ Après le test, vous devriez voir :
 SHOPIFY_WEBHOOK_SECRET=votre_cle_secrete_ici
 ```
 
+### Étape 2bis : Configurer FTP (Optionnel) 📤
+
+Pour activer l'upload automatique sur FTP, ajoutez également :
+```env
+FTP_HOST=ftp.votre-serveur.com
+FTP_USER=votre_utilisateur
+FTP_PASSWORD=votre_mot_de_passe
+FTP_REMOTE_DIR=/sage-x3/import
+```
+
+Testez la connexion FTP :
+```bash
+curl http://localhost:3000/test-ftp
+```
+
 ### Étape 3 : Déployer votre serveur
 
 Déployez sur votre hébergeur (Heroku, DigitalOcean, AWS, etc.)
@@ -122,6 +137,11 @@ Vous verrez l'historique de tous les webhooks envoyés et leur statut.
 ### Erreur HMAC
 ✅ Assurez-vous que `SHOPIFY_WEBHOOK_SECRET` correspond exactement à celle de Shopify
 ✅ Ne copiez pas d'espaces avant/après la clé
+
+### L'upload FTP échoue
+✅ Testez la connexion : `curl http://localhost:3000/test-ftp`
+✅ Vérifiez les identifiants FTP (HOST, USER, PASSWORD)
+✅ Activez le debug : `FTP_DEBUG=true`
 
 ## 📚 Ressources
 

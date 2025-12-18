@@ -4,6 +4,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const orderProcessor = require('./orderProcessor');
+const ftpUploader = require('./ftpUploader');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -59,15 +60,22 @@ app.post('/webhooks/shopify/orders-create', async (req, res) => {
     console.log(`📦 Commande #${orderData.order_number || orderData.name} reçue`);
 
     // Traiter la commande et générer le fichier
-    const filePath = await orderProcessor.processOrder(orderData);
+    const result = await orderProcessor.processOrder(orderData);
 
-    console.log(`✅ Fichier généré: ${filePath}`);
+    console.log(`✅ Fichier généré: ${result.filePath}`);
+
+    if (result.ftp.success) {
+      console.log(`✅ Fichier uploadé sur FTP: ${result.ftp.remotePath}`);
+    } else if (!result.ftp.skipped) {
+      console.log(`⚠️  Upload FTP échoué: ${result.ftp.message}`);
+    }
 
     // Répondre rapidement à Shopify (important: répondre dans les 5 secondes)
     res.status(200).json({
       success: true,
       message: 'Webhook traité avec succès',
-      file: filePath
+      file: result.filePath,
+      ftp: result.ftp
     });
 
   } catch (error) {
@@ -102,9 +110,25 @@ app.get('/', (req, res) => {
     version: '1.0.0',
     endpoints: {
       webhook: '/webhooks/shopify/orders-create',
-      health: '/health'
+      health: '/health',
+      ftpTest: '/test-ftp'
     }
   });
+});
+
+/**
+ * Route de test de connexion FTP
+ */
+app.get('/test-ftp', async (req, res) => {
+  try {
+    const result = await ftpUploader.testFTPConnection();
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
 });
 
 // Créer le répertoire de sortie s'il n'existe pas

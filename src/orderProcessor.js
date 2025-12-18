@@ -1,16 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
+const ftpUploader = require('./ftpUploader');
 
 /**
  * Traite une commande Shopify et génère un fichier texte pour Sage X3
  * @param {Object} order - Données de la commande Shopify
- * @returns {Promise<string>} - Chemin du fichier généré
+ * @returns {Promise<Object>} - Résultat du traitement avec info FTP
  */
 async function processOrder(order) {
   const orderText = formatOrderForSageX3(order);
   const filePath = saveOrderToFile(order, orderText);
-  return filePath;
+
+  // Uploader le fichier vers FTP si configuré
+  const ftpResult = await ftpUploader.uploadToFTP(filePath);
+
+  return {
+    filePath,
+    ftp: ftpResult
+  };
 }
 
 /**

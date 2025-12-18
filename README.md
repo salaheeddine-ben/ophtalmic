@@ -7,9 +7,11 @@ Ce serveur Node.js reçoit les webhooks de création de commande depuis Shopify 
 - ✅ Réception sécurisée des webhooks Shopify (vérification HMAC)
 - ✅ Traitement des commandes au format `orders/create`
 - ✅ Génération automatique de fichiers texte formatés pour Sage X3
+- ✅ **Upload automatique sur serveur FTP** 📤
 - ✅ Gestion des informations client, produits, prix et remises
 - ✅ Support des adresses de livraison et facturation
 - ✅ Calcul automatique des remises et TVA
+- ✅ Support FTP et FTPS (sécurisé)
 
 ## 🚀 Installation
 
@@ -56,6 +58,58 @@ npm run dev
 ```
 
 Le serveur démarre sur `http://localhost:3000`
+
+## 📤 Configuration FTP (Optionnel)
+
+Le serveur peut automatiquement uploader les fichiers générés vers un serveur FTP. Cette fonctionnalité est **optionnelle** et peut être activée en configurant les paramètres FTP dans le fichier `.env`.
+
+### Activer l'upload FTP
+
+Ajoutez ces paramètres à votre fichier `.env` :
+
+```env
+# Configuration FTP minimale (obligatoire)
+FTP_HOST=ftp.votre-serveur.com
+FTP_USER=votre_utilisateur
+FTP_PASSWORD=votre_mot_de_passe
+
+# Configuration avancée (optionnel)
+FTP_PORT=21                          # Port FTP (défaut: 21)
+FTP_SECURE=false                     # Utiliser FTPS (défaut: false)
+FTP_REMOTE_DIR=/sage-x3/import       # Répertoire distant
+FTP_FILE_PREFIX=SHOPIFY_             # Préfixe pour les fichiers
+FTP_DELETE_AFTER_UPLOAD=false        # Supprimer le fichier local après upload
+FTP_DEBUG=false                      # Mode debug pour logs détaillés
+```
+
+### Tester la connexion FTP
+
+Pour vérifier que votre configuration FTP fonctionne :
+
+```bash
+curl http://localhost:3000/test-ftp
+```
+
+Vous verrez :
+```json
+{
+  "success": true,
+  "message": "Connexion FTP réussie",
+  "fileCount": 5
+}
+```
+
+### Comportement
+
+- **FTP activé** : Les fichiers sont uploadés automatiquement après génération
+- **FTP désactivé** : Les fichiers restent uniquement en local dans `./orders/`
+- **Erreur FTP** : Le fichier est sauvegardé localement, l'erreur est loggée mais le webhook reste en succès
+
+### Sécurité
+
+- Utilisez **FTPS** en production (`FTP_SECURE=true`) pour chiffrer les connexions
+- Ne committez **jamais** le fichier `.env` avec vos identifiants
+- Testez toujours avec `FTP_DELETE_AFTER_UPLOAD=false` avant d'activer la suppression automatique
 
 ## 🔧 Configuration Shopify
 
@@ -189,6 +243,7 @@ curl -X POST http://localhost:3000/webhooks/shopify/orders-create \
 
 - `POST /webhooks/shopify/orders-create` - Endpoint principal pour les webhooks
 - `GET /health` - Vérification de l'état du serveur
+- `GET /test-ftp` - Test de connexion FTP
 - `GET /` - Informations sur le service
 
 ## 🐛 Dépannage
@@ -205,6 +260,17 @@ curl -X POST http://localhost:3000/webhooks/shopify/orders-create \
 1. Vérifiez que le répertoire `OUTPUT_DIRECTORY` est accessible en écriture
 2. Vérifiez les logs du serveur pour les erreurs de traitement
 
+### L'upload FTP échoue
+
+1. Testez la connexion FTP : `curl http://localhost:3000/test-ftp`
+2. Vérifiez vos identifiants FTP (`FTP_HOST`, `FTP_USER`, `FTP_PASSWORD`)
+3. Vérifiez que le serveur FTP est accessible depuis votre serveur
+4. Activez le mode debug : `FTP_DEBUG=true` pour voir les logs détaillés
+5. Vérifiez les permissions du répertoire distant (`FTP_REMOTE_DIR`)
+6. Si vous utilisez FTPS, assurez-vous que le certificat est valide
+
+**Note** : Même si l'upload FTP échoue, le fichier reste sauvegardé localement et le webhook retourne un succès à Shopify
+
 ## 📚 Documentation Shopify
 
 - [Webhooks Shopify](https://shopify.dev/docs/apps/build/webhooks)
@@ -217,7 +283,8 @@ curl -X POST http://localhost:3000/webhooks/shopify/orders-create \
 .
 ├── src/
 │   ├── server.js          # Serveur Express principal
-│   └── orderProcessor.js  # Traitement et formatage des commandes
+│   ├── orderProcessor.js  # Traitement et formatage des commandes
+│   └── ftpUploader.js     # Gestion de l'upload FTP
 ├── orders/                # Fichiers générés (créé automatiquement)
 ├── test/                  # Fichiers de test
 │   └── sample-order.json  # Exemple de payload Shopify
